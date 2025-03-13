@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package co.edu.sena.examplejdbc.bd;
 
 import co.edu.sena.examplejdbc.utils.MessageUtils;
@@ -15,42 +11,56 @@ import java.sql.Statement;
  * @author Juan Diego Orrego Vargas
  * Objetivo: Clase principal para conexión a base de datos
  */
-
 public class DBConnection {
 
+    // Objeto de conexión a la base de datos
     public static Connection connection;
+    
+    // Objeto para ejecutar sentencias SQL
     public static Statement statement;
-    private final String HOST = "localhost";
-    private final String PORT = "3306";
-    private final String DB = "bdkeys";
-    private final String USER = "developer";
-    private final String PASSWORD = "developer";
+    
+    // Datos de conexión (host, puerto, base de datos, usuario y contraseña)
+    private final String HOST = "localhost"; // Dirección del servidor MySQL
+    private final String PORT = "3306"; // Puerto por defecto de MySQL
+    private final String DB = ""; // Nombre de la base de datos (debe ser especificado)
+    private final String USER = "developer"; // Usuario de la base de datos
+    private final String PASSWORD = "developer"; // Contraseña del usuario
 
+    /**
+     * Método para establecer la conexión con la base de datos
+     */
     public void connect() {
         try {
+            // Cargar el driver de MySQL
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            
+            // Establecer la conexión con la base de datos usando los parámetros
             connection = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/"
                                                     + DB, USER, PASSWORD);
-            statement = (Statement) connection.createStatement();
-            System.out.println("Conectado :D");
             
+            // Crear un objeto Statement para ejecutar consultas SQL
+            statement = connection.createStatement();
+            
+            System.out.println("Conectado :D");
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {
             MessageUtils.showErrorMessage("Error de conexión a la base de datos");
         }
     }
     
+    /**
+     * Método para cerrar la conexión con la base de datos
+     */
     public void disconnect() {
         try {
             if (statement != null) {
-                statement.close();
+                statement.close(); // Cerrar el Statement
             }
             
             if (connection != null) {
-                connection.close();
+                connection.close(); // Cerrar la conexión con la base de datos
             }
             
             System.out.println("Desconectado :O");
-            
         } catch (SQLException e) {
             MessageUtils.showErrorMessage("Error desconectándose de la BD");
         }
