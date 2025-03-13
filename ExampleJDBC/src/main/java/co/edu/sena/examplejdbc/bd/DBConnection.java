@@ -16,7 +16,7 @@ import java.sql.Statement;
  * Objetivo: Clase principal para conexión a base de datos
  */
 
-public class BDConnection {
+public class DBConnection {
 
     public static Connection connection;
     public static Statement statement;
