@@ -9,7 +9,7 @@ import co.edu.sena.examplejdbc.bd.BDConnection;
 /**
  * Fecha: 13/03/2025
  * @author Juan Diego Orrego Vargas
- * 
+ * Objetivo: probar la conexión a la base de datos.
  */
 
 public class TestConnection {
