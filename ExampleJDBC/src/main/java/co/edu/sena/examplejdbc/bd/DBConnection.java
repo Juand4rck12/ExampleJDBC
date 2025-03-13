@@ -22,7 +22,7 @@ public class DBConnection {
     // Datos de conexión (host, puerto, base de datos, usuario y contraseña)
     private final String HOST = "localhost"; // Dirección del servidor MySQL
     private final String PORT = "3306"; // Puerto por defecto de MySQL
-    private final String DB = ""; // Nombre de la base de datos (debe ser especificado)
+    private final String DB = "bdkeys"; // Nombre de la base de datos (debe ser especificado)
     private final String USER = "developer"; // Usuario de la base de datos
     private final String PASSWORD = "developer"; // Contraseña del usuario
 
