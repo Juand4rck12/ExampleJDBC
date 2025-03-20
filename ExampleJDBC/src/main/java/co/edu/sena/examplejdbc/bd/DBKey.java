@@ -121,7 +121,7 @@ public class DBKey extends DBConnection{
         
         try {
             connect();
-            String sql = "SELECT * FROM employee_type WHERE id = ?";
+            String sql = "SELECT * FROM `key` WHERE id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
