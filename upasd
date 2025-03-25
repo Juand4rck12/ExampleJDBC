@@ -1,0 +1,77 @@
+[33mcommit 64d5a56152e58789f82ae85b5ae9d2e1fff356c9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Thu Mar 20 10:41:28 2025 -0500
+
+    Corrección
+    
+    Se corrige nombre en consulta SQL
+
+[33mcommit 84c548276fea060e0fc875ba4a9110660800ac71[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Thu Mar 20 09:16:48 2025 -0500
+
+    Se añaden clases para la tabla Employee
+    
+    Clases para Employee añadidas con sus respectivos metodos de consulta y modificacion en la DB
+
+[33mcommit c5f75b3173eae200830879e26c0cd5cf200a56d5[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Fri Mar 14 11:30:55 2025 -0500
+
+    Se añade key
+    
+    Se añaden las clases correspondientes para manejo y consultas/transacciones
+
+[33mcommit b580745e8cba6303c5f106f247c36861bd349aae[m[33m ([m[1;31morigin/dev[m[33m)[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Thu Mar 13 11:49:43 2025 -0500
+
+    DBEMployeeType
+    
+    Se codifica la clase de conexion a la tabla employee_type con sus respectivos test.
+
+[33mcommit 6b684483f5f466ef116e142c70350bbf1296266b[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Thu Mar 13 10:39:00 2025 -0500
+
+    Nombre de la base de datos añadida
+
+[33mcommit e85359c1a584dceb80e5114698a35414133e4298[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Thu Mar 13 10:18:31 2025 -0500
+
+    Comentarios agregados nuevamente
+
+[33mcommit a6a1e8394d82c6b80a9a93caeee40c5360903957[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Thu Mar 13 10:13:36 2025 -0500
+
+    Cambio de nombre en clase para conexión a base de datos
+
+[33mcommit afe311aba4d5c22534b5f5236644e328bd09e532[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Thu Mar 13 09:14:22 2025 -0500
+
+    Objetivo del TestConnection actualizado
+
+[33mcommit e97e3a1c84226a79e43391d2c6d1298029ff6272[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Thu Mar 13 09:07:37 2025 -0500
+
+    Conexión JDBC
+    
+    Se crea clase conexión a mysql. También se agrega clase para mensajería.
+
+[33mcommit 8f7aa050c64a7ea6f92d4bc1b63b9f89c5ea048a[m
+Author: Juan_Diego <juan3312orrego@gmail.com>
+Date:   Thu Mar 13 08:10:20 2025 -0500
+
+    Configuración proyecto
+    
+    Se añade dependencia de MySQL connector j al pom y se agregan tags de documentación
+
+[33mcommit 2ebc5e9a14941d699349aec6ae2864dce1059aa4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Juan Diego Orrego <juan3312orrego@gmail.com>
+Date:   Tue Mar 11 12:28:40 2025 -0500
+
+    Initial commit
