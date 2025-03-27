@@ -60,7 +60,7 @@ public class EmployeeTypeController implements IEmployeeTypeController {
         
         // Consultar si el employeeType existe en la db
         EmployeeType employeeTypeExists = dbe.findById(id);
-        if (employeeTypeExists != null) {
+        if (employeeTypeExists == null) {
             throw new Exception("No existe el empleado");
         }
         
