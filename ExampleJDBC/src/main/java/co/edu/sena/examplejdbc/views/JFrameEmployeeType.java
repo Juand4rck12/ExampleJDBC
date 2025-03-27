@@ -5,6 +5,7 @@ import co.edu.sena.examplejdbc.controllers.IEmployeeTypeController;
 import co.edu.sena.examplejdbc.model.EmployeeType;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,7 +69,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tipo de empleado");
 
-        jPanelBackground.setBackground(new java.awt.Color(0, 153, 204));
+        jPanelBackground.setBackground(new java.awt.Color(255, 255, 102));
         jPanelBackground.setForeground(new java.awt.Color(0, 153, 204));
 
         jLabelTitle.setBackground(new java.awt.Color(255, 255, 255));
@@ -94,17 +95,27 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
             }
         });
 
-        jButtonUpdate.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonUpdate.setBackground(new java.awt.Color(0, 153, 204));
         jButtonUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButtonUpdate.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setText("Modificar");
         jButtonUpdate.setEnabled(false);
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
 
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.setText("Eliminar");
         jButtonDelete.setEnabled(false);
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
 
         jButtonClean.setBackground(new java.awt.Color(102, 102, 102));
         jButtonClean.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -126,6 +137,11 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
 
             }
         ));
+        jTableEmployeeTypes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableEmployeeTypesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableEmployeeTypes);
 
         jTextFieldId.setForeground(new java.awt.Color(51, 51, 51));
@@ -219,6 +235,63 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
             MessageUtils.showErrorMessage(e.getMessage());
         }
     }//GEN-LAST:event_jButtonInsertActionPerformed
+
+    private void jTableEmployeeTypesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEmployeeTypesMouseClicked
+        int rowSelected = jTableEmployeeTypes.getSelectedRow();
+        
+        if (rowSelected != -1) {
+            jButtonInsert.setEnabled(false);
+            jButtonDelete.setEnabled(true);
+            jButtonUpdate.setEnabled(true);
+            
+            // Obtener de la tabla la celda con el id del tipo de empleado
+            int idSelected = Integer.parseInt(jTableEmployeeTypes.getValueAt(rowSelected, 0).toString());
+            
+            try {
+                EmployeeType findEmployeeType = employeeTypeController.findById(idSelected);
+                jTextFieldId.setText(String.valueOf(findEmployeeType.getId()));
+                jTextFieldDescript.setText(String.valueOf(findEmployeeType.getDescript()));
+                
+            } catch (Exception e) {
+                MessageUtils.showErrorMessage(e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_jTableEmployeeTypesMouseClicked
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        try {
+            EmployeeType employeeType = new EmployeeType();
+            employeeType.setId(Integer.parseInt(jTextFieldId.getText()));
+            employeeType.setDescript(jTextFieldDescript.getText().toUpperCase());
+            
+            employeeTypeController.update(employeeType);
+            MessageUtils.showInfoMessage("Tipo de empleado actualizado exitosamente!");
+            clear();
+            fillTable();
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage(e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane,
+                    "¿Esta seguro de eliminar el tipo de empleado?", "Confirmar" ,
+                    JOptionPane.YES_NO_OPTION);
+            
+            if (option == 0) {
+                int id = Integer.parseInt(jTextFieldId.getText());
+                employeeTypeController.delete(id);
+                MessageUtils.showInfoMessage("Tipo de empleado eliminado exitosamente");
+                clear();
+                fillTable();
+            }
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage(e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     public void clear() {
         jTextFieldId.setText("");
