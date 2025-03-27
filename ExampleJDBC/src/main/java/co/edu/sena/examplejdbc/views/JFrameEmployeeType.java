@@ -250,7 +250,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
             try {
                 EmployeeType findEmployeeType = employeeTypeController.findById(idSelected);
                 jTextFieldId.setText(String.valueOf(findEmployeeType.getId()));
-                jTextFieldDescript.setText(String.valueOf(findEmployeeType.getDescript()));
+                jTextFieldDescript.setText(findEmployeeType.getDescript());
                 
             } catch (Exception e) {
                 MessageUtils.showErrorMessage(e.getMessage());
