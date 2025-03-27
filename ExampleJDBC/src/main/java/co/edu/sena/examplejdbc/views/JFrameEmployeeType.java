@@ -287,7 +287,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
                 clear();
                 fillTable();
             }
-            
+            clear();
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
