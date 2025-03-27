@@ -13,6 +13,7 @@ import co.edu.sena.examplejdbc.model.EmployeeType;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,8 +30,8 @@ public class JFrameEmployee extends javax.swing.JFrame {
      */
     public JFrameEmployee() {
         initComponents();
-        fillComboTypes();
         fillTable();
+        fillComboTypes();
     }
 
     /**
@@ -104,11 +105,23 @@ public class JFrameEmployee extends javax.swing.JFrame {
         jButtonUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setText("Modificar");
+        jButtonUpdate.setEnabled(false);
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
 
         jButtonDelete.setBackground(new java.awt.Color(153, 0, 0));
         jButtonDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.setText("Eliminar");
+        jButtonDelete.setEnabled(false);
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
 
         jButtonClear.setBackground(new java.awt.Color(102, 102, 102));
         jButtonClear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -231,9 +244,22 @@ public class JFrameEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
-        // TODO add your handling code here:
-        
-        
+        try {
+            Employee employee = new Employee();
+            employee.setDocument(Long.parseLong(jTextFieldDocument.getText()));
+            employee.setFullname(jTextFieldFullname.getText());
+            employee.setAddress(jTextFieldAddress.getText());
+            employee.setPhone(jTextFieldPhone.getText());            
+            // FK
+            employee.setEmployeeType((EmployeeType) jComboBoxTypeid.getSelectedItem());
+            
+            employeeController.insert(employee);
+            MessageUtils.showInfoMessage("Empleado creado exitosamente");
+            clear();
+            fillTable();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage(e.getMessage());
+        }                
     }//GEN-LAST:event_jButtonInsertActionPerformed
 
     private void jTableEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEmployeesMouseClicked
@@ -245,11 +271,16 @@ public class JFrameEmployee extends javax.swing.JFrame {
             jButtonUpdate.setEnabled(true);
             
             // Obtener de la tabla la celda con el id del tipo de empleado
-            long idSelected = Long.parseLong(jTableEmployees.getValueAt(rowSelected, 0).toString());
+            long documentSelected = Long.parseLong(jTableEmployees.getValueAt(rowSelected, 0).toString());
             
             try {
-                Employee findEmployee = employeeController.findById(idSelected);
-                
+                Employee findEmployee = employeeController.findById(documentSelected);
+                jTextFieldDocument.setText(String.valueOf(findEmployee.getDocument()));
+                jTextFieldFullname.setText(findEmployee.getFullname());
+                jTextFieldAddress.setText(findEmployee.getAddress());
+                jTextFieldPhone.setText(findEmployee.getPhone());
+                jComboBoxTypeid.getModel().setSelectedItem(findEmployee.getEmployeeType());
+
                 
             } catch (Exception e) {
                 MessageUtils.showErrorMessage(e.getMessage());
@@ -257,7 +288,49 @@ public class JFrameEmployee extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTableEmployeesMouseClicked
 
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane,
+                    "¿Esta seguro de eliminar el empleado?", "Confirmar" ,
+                    JOptionPane.YES_NO_OPTION);
+            
+            if (option == 0) {
+                Long document = Long.parseLong(jTextFieldDocument.getText());
+                employeeController.delete(document);
+                MessageUtils.showInfoMessage("Empleado eliminado exitosamente");
+                clear();
+                fillTable();
+            }
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage(e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        try {
+            Employee employee = new Employee();
+            employee.setDocument(Long.parseLong(jTextFieldDocument.getText()));
+            employee.setFullname(jTextFieldFullname.getText());
+            employee.setAddress(jTextFieldAddress.getText());
+            employee.setPhone(jTextFieldPhone.getText());
+            employee.setEmployeeType((EmployeeType) jComboBoxTypeid.getSelectedItem());
+            
+            employeeController.update(employee);
+            
+            MessageUtils.showInfoMessage("Empleado actualizado exitosamente!");
+            clear();
+            fillTable();
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage(e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
     public void clear() {
+        jButtonInsert.setEnabled(true);
+        jButtonDelete.setEnabled(false);
+        jButtonUpdate.setEnabled(false);
         jTextFieldDocument.setText("");
         jTextFieldFullname.setText("");
         jTextFieldAddress.setText("");
@@ -273,18 +346,14 @@ public class JFrameEmployee extends javax.swing.JFrame {
             jTableEmployees.setModel(model);
             model.addColumn("Documento");
             model.addColumn("Nombre completo");
-            model.addColumn("Dirección");
-            model.addColumn("Teléfono");
-            model.addColumn("Tipo");
+            model.addColumn("Tipo de empleado");
             
-            String[] rows = new String[5];
+            String[] rows = new String[3];
             List<Employee> AllEmployees = employeeController.findAll();
             for (Employee employee : AllEmployees) {
                 rows[0] = String.valueOf(employee.getDocument());
                 rows[1] = employee.getFullname();
-                rows[2] = employee.getAddress();
-                rows[3] = employee.getPhone();
-                rows[4] = String.valueOf(employee.getEmployeeType().getDescript());
+                rows[2] = String.valueOf(employee.getEmployeeType().getDescript());
                 model.addRow(rows);
             }
             
