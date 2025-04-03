@@ -42,6 +42,11 @@ public class RecordController implements IRecordController {
             throw new Exception("El estado es obligatorio");
         }
         
+        Record recordExists = dbr.findById(record.getId());
+        if (recordExists != null) {
+            throw new Exception("El Id del registro ya existe");
+        }
+        
         dbr.insert(record);
     }
 
@@ -84,7 +89,7 @@ public class RecordController implements IRecordController {
         
         Record recordExists = dbr.findById(id);
         if (recordExists == null) {
-            
+            throw new Exception("No existe el registro");
         }
         
         dbr.delete(id);
