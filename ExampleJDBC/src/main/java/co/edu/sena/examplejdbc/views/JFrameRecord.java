@@ -10,6 +10,7 @@ import co.edu.sena.examplejdbc.model.Employee;
 import co.edu.sena.examplejdbc.model.Key;
 import co.edu.sena.examplejdbc.model.Record;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
+import java.awt.event.WindowEvent;
 import java.time.LocalDate;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -68,17 +69,19 @@ public class JFrameRecord extends javax.swing.JFrame {
         jComboBoxEmployeeId = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jComboBoxKeyId = new javax.swing.JComboBox<>();
+        jButtonMenu = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Registros");
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 0));
+        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Registros");
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto Condensed", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
         jTableRecords.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,10 +104,11 @@ public class JFrameRecord extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 760, 130));
 
-        jButtonInsert.setText("Crear");
-        jButtonInsert.setBackground(new java.awt.Color(0, 204, 51));
+        jButtonInsert.setBackground(new java.awt.Color(0, 153, 0));
         jButtonInsert.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonInsert.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonInsert.setText("Crear");
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertActionPerformed(evt);
@@ -112,11 +116,12 @@ public class JFrameRecord extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, 30));
 
-        jButtonUpdate.setText("Modificar");
         jButtonUpdate.setBackground(new java.awt.Color(0, 51, 204));
-        jButtonUpdate.setEnabled(false);
         jButtonUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonUpdate.setText("Modificar");
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonUpdate.setEnabled(false);
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
@@ -124,11 +129,12 @@ public class JFrameRecord extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, 30));
 
-        jButtonDelete.setText("Eliminar");
         jButtonDelete.setBackground(new java.awt.Color(153, 0, 0));
-        jButtonDelete.setEnabled(false);
         jButtonDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonDelete.setText("Eliminar");
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDelete.setEnabled(false);
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteActionPerformed(evt);
@@ -136,10 +142,11 @@ public class JFrameRecord extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, 30));
 
-        jButtonClear.setText("Limpiar");
         jButtonClear.setBackground(new java.awt.Color(102, 102, 102));
         jButtonClear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonClear.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonClear.setText("Limpiar");
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
@@ -147,7 +154,7 @@ public class JFrameRecord extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, -1, 30));
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel2.setBackground(new java.awt.Color(102, 255, 102));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 2, true));
 
         jLabel3.setText("Hora de inicio:");
@@ -160,9 +167,9 @@ public class JFrameRecord extends javax.swing.JFrame {
 
         timePickerEndTime.setEnabled(false);
 
+        jLabelId.setText("Id (automático):");
         jLabelId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelId.setForeground(new java.awt.Color(51, 51, 51));
-        jLabelId.setText("Id (automático):");
 
         jTextFieldId.setEnabled(false);
 
@@ -217,7 +224,7 @@ public class JFrameRecord extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 380, 190));
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel3.setBackground(new java.awt.Color(102, 255, 102));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 2, true));
 
         jLabel7.setText("Estado:");
@@ -273,6 +280,19 @@ public class JFrameRecord extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 360, 190));
 
+        jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/casa.png"))); // NOI18N
+        jButtonMenu.setText("Menu");
+        jButtonMenu.setBackground(new java.awt.Color(0, 0, 153));
+        jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonMenu.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 90, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -314,7 +334,7 @@ public class JFrameRecord extends javax.swing.JFrame {
                 jComboBoxEmployeeId.getModel().setSelectedItem(findRecord.getEmployeeId());
                 jComboBoxKeyId.getModel().setSelectedItem(findRecord.getKeyId());
                 jComboBoxStatus.setSelectedItem(findRecord.getStatus());
-                        
+
             } catch (Exception e) {
                 MessageUtils.showErrorMessage(e.getMessage());
             }
@@ -324,9 +344,9 @@ public class JFrameRecord extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         try {
             int option = JOptionPane.showConfirmDialog(rootPane,
-                    "¿Esta seguro de eliminar el registro?", "Confirmar" ,
+                    "¿Esta seguro de eliminar el registro?", "Confirmar",
                     JOptionPane.YES_NO_OPTION);
-            
+
             if (option == 0) {
                 int id = Integer.parseInt(jTextFieldId.getText());
                 recordController.delete(id);
@@ -335,7 +355,7 @@ public class JFrameRecord extends javax.swing.JFrame {
                 fillTable();
             }
             clear();
-            
+
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
@@ -350,12 +370,12 @@ public class JFrameRecord extends javax.swing.JFrame {
             record.setEmployeeId((Employee) jComboBoxEmployeeId.getSelectedItem());
             record.setKeyId((Key) jComboBoxKeyId.getSelectedItem());
             record.setStatus(jComboBoxStatus.getSelectedItem().toString());
-            
+
             recordController.insert(record);
             MessageUtils.showInfoMessage("Registro añadido exitosamente");
             clear();
             fillTable();
-            
+
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
@@ -367,21 +387,29 @@ public class JFrameRecord extends javax.swing.JFrame {
             record.setId(Integer.parseInt(jTextFieldId.getText()));
             record.setDateRecord(datePickerDateRecord.getDate().toString());
             record.setStartTime(timePickerStartTime.getTime().toString());
-            record.setEndTime(timePickerEndTime.getTime() != null ? timePickerEndTime.getTime().toString() 
-                                                                  : null);
+            record.setEndTime(timePickerEndTime.getTime() != null ? timePickerEndTime.getTime().toString()
+                    : null);
             record.setEmployeeId((Employee) jComboBoxEmployeeId.getSelectedItem());
             record.setKeyId((Key) jComboBoxKeyId.getSelectedItem());
             record.setStatus(jComboBoxStatus.getSelectedItem().toString());
-            
+
             recordController.update(record);
             MessageUtils.showInfoMessage("Registro actualizado exitosamente");
             clear();
             fillTable();
-            
+
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
+        int confirm = JOptionPane.showConfirmDialog(null, "¿Deseas volver al menú principal?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            new JFrameHome().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jButtonMenuActionPerformed
 
     public void fillTable() {
         try {
@@ -424,13 +452,13 @@ public class JFrameRecord extends javax.swing.JFrame {
             jComboBoxEmployeeId.setModel(model);
             model.addAll(employees);
             jComboBoxEmployeeId.setSelectedIndex(0);
-            
+
             List<Key> keys = keyController.findAll();
             model = new DefaultComboBoxModel();
             jComboBoxKeyId.setModel(model);
             model.addAll(keys);
             jComboBoxKeyId.setSelectedIndex(0);
-            
+
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
@@ -489,6 +517,7 @@ public class JFrameRecord extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
+    private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JComboBox<String> jComboBoxEmployeeId;
     private javax.swing.JComboBox<String> jComboBoxKeyId;

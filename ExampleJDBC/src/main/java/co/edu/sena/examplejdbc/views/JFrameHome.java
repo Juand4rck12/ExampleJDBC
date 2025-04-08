@@ -1,15 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package co.edu.sena.examplejdbc.views;
+
+import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author victus
+ * @author Juan Diego Orrego
  */
 public class JFrameHome extends javax.swing.JFrame {
-
+    
+    int xMouse, yMouse;
+    
     /**
      * Creates new form JFrameHome
      */
@@ -26,72 +28,246 @@ public class JFrameHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jPanelBackground = new javax.swing.JPanel();
+        jButtonEmployeeTypes = new javax.swing.JButton();
+        jButtonEmployees = new javax.swing.JButton();
+        jButtonKeys = new javax.swing.JButton();
+        jButtonRecords = new javax.swing.JButton();
+        jLabelWelcome = new javax.swing.JLabel();
+        jLabelCopyright = new javax.swing.JLabel();
+        jLabelTitle = new javax.swing.JLabel();
+        jLabelImageBg = new javax.swing.JLabel();
+        jLabelDescription = new javax.swing.JLabel();
+        jButtonExit = new javax.swing.JButton();
+        jPanelControlBar = new javax.swing.JPanel();
+        jPanelExit = new javax.swing.JPanel();
+        jLabelExit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
+        setUndecorated(true);
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelBackground.setBackground(new java.awt.Color(102, 255, 102));
+        jPanelBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Tipo de funcionario");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 170, 40));
+        jButtonEmployeeTypes.setBackground(new java.awt.Color(0, 153, 0));
+        jButtonEmployeeTypes.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonEmployeeTypes.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEmployeeTypes.setText("Tipo de funcionario");
+        jButtonEmployeeTypes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEmployeeTypes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmployeeTypesActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonEmployeeTypes, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 180, 40));
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Funcionarios");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 170, 40));
+        jButtonEmployees.setBackground(new java.awt.Color(0, 153, 0));
+        jButtonEmployees.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonEmployees.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEmployees.setText("Funcionarios");
+        jButtonEmployees.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEmployees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmployeesActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 180, 40));
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 0));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Llaves");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, 40));
+        jButtonKeys.setBackground(new java.awt.Color(0, 153, 0));
+        jButtonKeys.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonKeys.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonKeys.setText("Llaves");
+        jButtonKeys.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonKeys.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonKeysActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonKeys, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 180, 40));
 
-        jButton4.setBackground(new java.awt.Color(0, 153, 0));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Registros");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 170, 40));
+        jButtonRecords.setBackground(new java.awt.Color(0, 153, 0));
+        jButtonRecords.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonRecords.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRecords.setText("Registros");
+        jButtonRecords.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRecords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRecordsActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 180, 40));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Master Key 1.0");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        jLabelWelcome.setFont(new java.awt.Font("Roboto Condensed", 1, 36)); // NOI18N
+        jLabelWelcome.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelWelcome.setText("BIENVENIDO");
+        jPanelBackground.add(jLabelWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("ADSO 2921881 - 2025");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, -1, -1));
+        jLabelCopyright.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabelCopyright.setForeground(new java.awt.Color(0, 204, 0));
+        jLabelCopyright.setText("ADSO 2921881 - 2025");
+        jPanelBackground.add(jLabelCopyright, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/fondo.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, -1, -1));
+        jLabelTitle.setFont(new java.awt.Font("Roboto ExtraBold", 0, 36)); // NOI18N
+        jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitle.setText("MasterKey 1.0");
+        jPanelBackground.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+
+        jLabelImageBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/homeBg.jpg"))); // NOI18N
+        jLabelImageBg.setToolTipText("");
+        jPanelBackground.add(jLabelImageBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 500));
+
+        jLabelDescription.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelDescription.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelDescription.setText("Seleccione el modulo al que se desea dirigir:");
+        jPanelBackground.add(jLabelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
+
+        jButtonExit.setBackground(new java.awt.Color(204, 0, 0));
+        jButtonExit.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonExit.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonExit.setText("Salir");
+        jButtonExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExitActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 180, 40));
+
+        jPanelControlBar.setBackground(new java.awt.Color(102, 255, 102));
+        jPanelControlBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanelControlBarMouseDragged(evt);
+            }
+        });
+        jPanelControlBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanelControlBarMousePressed(evt);
+            }
+        });
+
+        jPanelExit.setBackground(new java.awt.Color(102, 255, 102));
+        jPanelExit.setForeground(new java.awt.Color(102, 255, 102));
+
+        jLabelExit.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        jLabelExit.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelExit.setText("X");
+        jLabelExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelExitMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelExitMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelExitLayout = new javax.swing.GroupLayout(jPanelExit);
+        jPanelExit.setLayout(jPanelExitLayout);
+        jPanelExitLayout.setHorizontalGroup(
+            jPanelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelExitLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelExit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanelExitLayout.setVerticalGroup(
+            jPanelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelExitLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelExit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout jPanelControlBarLayout = new javax.swing.GroupLayout(jPanelControlBar);
+        jPanelControlBar.setLayout(jPanelControlBarLayout);
+        jPanelControlBarLayout.setHorizontalGroup(
+            jPanelControlBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelControlBarLayout.createSequentialGroup()
+                .addGap(0, 750, Short.MAX_VALUE)
+                .addComponent(jPanelExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanelControlBarLayout.setVerticalGroup(
+            jPanelControlBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelControlBarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanelExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanelBackground.add(jPanelControlBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+ 
+    public void showFrame(JFrame frameToShow) {
+        frameToShow.setVisible(true);
+        this.setVisible(false);
+    }
+    
+    private void jButtonEmployeeTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmployeeTypesActionPerformed
+        showFrame(new JFrameEmployeeType());
+    }//GEN-LAST:event_jButtonEmployeeTypesActionPerformed
+
+    private void jButtonEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmployeesActionPerformed
+        showFrame(new JFrameEmployee());
+    }//GEN-LAST:event_jButtonEmployeesActionPerformed
+
+    private void jButtonKeysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKeysActionPerformed
+        showFrame(new JFrameKey());
+    }//GEN-LAST:event_jButtonKeysActionPerformed
+
+    private void jButtonRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecordsActionPerformed
+        showFrame(new JFrameRecord());
+    }//GEN-LAST:event_jButtonRecordsActionPerformed
+
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+        int option = JOptionPane.showConfirmDialog(null, "¿Estas seguro que deseas cerrar el programa?",
+                "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (option == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void jPanelControlBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelControlBarMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanelControlBarMousePressed
+
+    private void jPanelControlBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelControlBarMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jPanelControlBarMouseDragged
+
+    private void jLabelExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelExitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabelExitMouseClicked
+
+    private void jLabelExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelExitMouseEntered
+        jPanelExit.setBackground(Color.red);
+        jLabelExit.setForeground(Color.white);
+    }//GEN-LAST:event_jLabelExitMouseEntered
+
+    private void jLabelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelExitMouseExited
+        jPanelExit.setBackground(new Color(102,255,102));
+        jLabelExit.setForeground(new Color(51,51,51));
+        
+    }//GEN-LAST:event_jLabelExitMouseExited
 
     /**
      * @param args the command line arguments
@@ -129,13 +305,19 @@ public class JFrameHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jButtonEmployeeTypes;
+    private javax.swing.JButton jButtonEmployees;
+    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonKeys;
+    private javax.swing.JButton jButtonRecords;
+    private javax.swing.JLabel jLabelCopyright;
+    private javax.swing.JLabel jLabelDescription;
+    private javax.swing.JLabel jLabelExit;
+    private javax.swing.JLabel jLabelImageBg;
+    private javax.swing.JLabel jLabelTitle;
+    private javax.swing.JLabel jLabelWelcome;
+    private javax.swing.JPanel jPanelBackground;
+    private javax.swing.JPanel jPanelControlBar;
+    private javax.swing.JPanel jPanelExit;
     // End of variables declaration//GEN-END:variables
 }

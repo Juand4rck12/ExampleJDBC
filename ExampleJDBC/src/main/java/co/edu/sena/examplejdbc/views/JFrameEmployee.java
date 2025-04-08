@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author victus
  */
 public class JFrameEmployee extends javax.swing.JFrame {
-    
+
     private IEmployeeController employeeController = new EmployeeController();
     private IEmployeeTypeController employeeTypeController = new EmployeeTypeController();
 
@@ -32,7 +32,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
         initComponents();
         fillTable();
         fillComboTypes();
-    }
+                }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,40 +61,44 @@ public class JFrameEmployee extends javax.swing.JFrame {
         jButtonClear = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEmployees = new javax.swing.JTable();
+        jButtonMenu = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Empleados");
+        setUndecorated(true);
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 102));
+        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
 
-        jLabelTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelTitle.setForeground(new java.awt.Color(51, 51, 51));
         jLabelTitle.setText("Empleado");
+        jLabelTitle.setFont(new java.awt.Font("Roboto Condensed", 1, 36)); // NOI18N
+        jLabelTitle.setForeground(new java.awt.Color(51, 51, 51));
 
+        jLabelDocument.setText("Documento:");
         jLabelDocument.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelDocument.setForeground(new java.awt.Color(51, 51, 51));
-        jLabelDocument.setText("Documento:");
 
+        jLabelFullname.setText("Nombre:");
         jLabelFullname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelFullname.setForeground(new java.awt.Color(51, 51, 51));
-        jLabelFullname.setText("Nombre:");
 
+        jLabelPhone.setText("Teléfono:");
         jLabelPhone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelPhone.setForeground(new java.awt.Color(51, 51, 51));
-        jLabelPhone.setText("Teléfono:");
 
+        jLabelAddress.setText("Dirección:");
         jLabelAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelAddress.setForeground(new java.awt.Color(51, 51, 51));
-        jLabelAddress.setText("Dirección:");
 
+        jLabelTypeId.setText("Tipo:");
         jLabelTypeId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelTypeId.setForeground(new java.awt.Color(51, 51, 51));
-        jLabelTypeId.setText("Tipo:");
 
-        jButtonInsert.setBackground(new java.awt.Color(0, 204, 51));
+        jButtonInsert.setBackground(new java.awt.Color(0, 153, 0));
         jButtonInsert.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonInsert.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInsert.setText("Crear");
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertActionPerformed(evt);
@@ -105,6 +109,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
         jButtonUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setText("Modificar");
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUpdate.setEnabled(false);
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +121,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
         jButtonDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.setText("Eliminar");
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDelete.setEnabled(false);
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +133,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
         jButtonClear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonClear.setForeground(new java.awt.Color(255, 255, 255));
         jButtonClear.setText("Limpiar");
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
@@ -151,53 +158,67 @@ public class JFrameEmployee extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableEmployees);
 
+        jButtonMenu.setBackground(new java.awt.Color(0, 0, 153));
+        jButtonMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonMenu.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/casa.png"))); // NOI18N
+        jButtonMenu.setText("Menu");
+        jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelTypeId)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelDocument)
-                                    .addComponent(jLabelAddress))
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldDocument)
-                                    .addComponent(jTextFieldAddress)
-                                    .addComponent(jComboBoxTypeid, 0, 160, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldFullname, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldPhone)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(91, 91, 91)
-                                .addComponent(jButtonUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelPhone)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButtonDelete)
-                                        .addGap(84, 84, 84)
-                                        .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabelFullname)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(302, 302, 302)
-                        .addComponent(jLabelTitle)))
+                        .addComponent(jButtonMenu)
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabelTitle))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabelTypeId)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelDocument)
+                                .addComponent(jLabelAddress))
+                            .addGap(39, 39, 39)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldDocument)
+                                .addComponent(jTextFieldAddress)
+                                .addComponent(jComboBoxTypeid, 0, 160, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldFullname, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                .addComponent(jTextFieldPhone)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButtonInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(91, 91, 91)
+                            .addComponent(jButtonUpdate)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelPhone)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButtonDelete)
+                                    .addGap(84, 84, 84)
+                                    .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabelFullname)))))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabelTitle)
-                .addGap(43, 43, 43)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTitle)
+                    .addComponent(jButtonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDocument)
                     .addComponent(jLabelFullname)
@@ -213,7 +234,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTypeId)
                     .addComponent(jComboBoxTypeid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,30 +270,30 @@ public class JFrameEmployee extends javax.swing.JFrame {
             employee.setDocument(Long.parseLong(jTextFieldDocument.getText()));
             employee.setFullname(jTextFieldFullname.getText());
             employee.setAddress(jTextFieldAddress.getText());
-            employee.setPhone(jTextFieldPhone.getText());            
+            employee.setPhone(jTextFieldPhone.getText());
             // FK
             employee.setEmployeeType((EmployeeType) jComboBoxTypeid.getSelectedItem());
-            
+
             employeeController.insert(employee);
             MessageUtils.showInfoMessage("Empleado creado exitosamente");
             clear();
             fillTable();
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
-        }                
+        }
     }//GEN-LAST:event_jButtonInsertActionPerformed
 
     private void jTableEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEmployeesMouseClicked
         int rowSelected = jTableEmployees.getSelectedRow();
-        
+
         if (rowSelected != -1) {
             jButtonInsert.setEnabled(false);
             jButtonDelete.setEnabled(true);
             jButtonUpdate.setEnabled(true);
-            
+
             // Obtener de la tabla la celda con el id del tipo de empleado
             long documentSelected = Long.parseLong(jTableEmployees.getValueAt(rowSelected, 0).toString());
-            
+
             try {
                 Employee findEmployee = employeeController.findById(documentSelected);
                 jTextFieldDocument.setText(String.valueOf(findEmployee.getDocument()));
@@ -281,7 +302,6 @@ public class JFrameEmployee extends javax.swing.JFrame {
                 jTextFieldPhone.setText(findEmployee.getPhone());
                 jComboBoxTypeid.getModel().setSelectedItem(findEmployee.getEmployeeType());
 
-                
             } catch (Exception e) {
                 MessageUtils.showErrorMessage(e.getMessage());
             }
@@ -291,9 +311,9 @@ public class JFrameEmployee extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         try {
             int option = JOptionPane.showConfirmDialog(rootPane,
-                    "¿Esta seguro de eliminar el empleado?", "Confirmar" ,
+                    "¿Esta seguro de eliminar el empleado?", "Confirmar",
                     JOptionPane.YES_NO_OPTION);
-            
+
             if (option == 0) {
                 Long document = Long.parseLong(jTextFieldDocument.getText());
                 employeeController.delete(document);
@@ -315,17 +335,25 @@ public class JFrameEmployee extends javax.swing.JFrame {
             employee.setAddress(jTextFieldAddress.getText());
             employee.setPhone(jTextFieldPhone.getText());
             employee.setEmployeeType((EmployeeType) jComboBoxTypeid.getSelectedItem());
-            
+
             employeeController.update(employee);
-            
+
             MessageUtils.showInfoMessage("Empleado actualizado exitosamente!");
             clear();
             fillTable();
-            
+
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
+        int confirm = JOptionPane.showConfirmDialog(null, "¿Deseas volver al menú principal?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            new JFrameHome().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jButtonMenuActionPerformed
 
     public void clear() {
         jButtonInsert.setEnabled(true);
@@ -339,7 +367,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
         jTableEmployees.clearSelection();
         jTextFieldDocument.requestFocus();
     }
-    
+
     public void fillTable() {
         try {
             DefaultTableModel model = new DefaultTableModel();
@@ -347,7 +375,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
             model.addColumn("Documento");
             model.addColumn("Nombre completo");
             model.addColumn("Tipo de empleado");
-            
+
             String[] rows = new String[3];
             List<Employee> AllEmployees = employeeController.findAll();
             for (Employee employee : AllEmployees) {
@@ -356,27 +384,26 @@ public class JFrameEmployee extends javax.swing.JFrame {
                 rows[2] = String.valueOf(employee.getEmployeeType().getDescript());
                 model.addRow(rows);
             }
-            
-            
+
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
     }
-    
+
     public void fillComboTypes() {
         try {
             List<EmployeeType> types = employeeTypeController.findAll();
             DefaultComboBoxModel model = new DefaultComboBoxModel();
             jComboBoxTypeid.setModel(model);
             model.addAll(types);
-            
+
             jComboBoxTypeid.setSelectedIndex(0);
-            
+
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -416,6 +443,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
+    private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JComboBox<String> jComboBoxTypeid;
     private javax.swing.JLabel jLabelAddress;

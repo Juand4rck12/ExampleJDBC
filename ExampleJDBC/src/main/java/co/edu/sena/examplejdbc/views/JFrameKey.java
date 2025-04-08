@@ -8,6 +8,7 @@ import co.edu.sena.examplejdbc.controllers.IKeyController;
 import co.edu.sena.examplejdbc.controllers.KeyController;
 import co.edu.sena.examplejdbc.model.Key;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
+import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author victus
  */
 public class JFrameKey extends javax.swing.JFrame {
-    
+
     private IKeyController keyController = new KeyController();
 
     /**
@@ -56,13 +57,15 @@ public class JFrameKey extends javax.swing.JFrame {
         jButtonUpdate = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
         jButtonClear = new javax.swing.JButton();
+        jButtonMenu = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Llaves");
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
 
-        jLabelTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelTitle.setFont(new java.awt.Font("Roboto Condensed", 1, 36)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(51, 51, 51));
         jLabelTitle.setText("Llaves");
 
@@ -113,6 +116,7 @@ public class JFrameKey extends javax.swing.JFrame {
         jButtonInsert.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonInsert.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInsert.setText("Crear");
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertActionPerformed(evt);
@@ -123,6 +127,7 @@ public class JFrameKey extends javax.swing.JFrame {
         jButtonUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setText("Modificar");
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUpdate.setEnabled(false);
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +139,7 @@ public class JFrameKey extends javax.swing.JFrame {
         jButtonDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.setText("Eliminar");
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDelete.setEnabled(false);
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,9 +151,22 @@ public class JFrameKey extends javax.swing.JFrame {
         jButtonClear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonClear.setForeground(new java.awt.Color(255, 255, 255));
         jButtonClear.setText("Limpiar");
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
+            }
+        });
+
+        jButtonMenu.setBackground(new java.awt.Color(0, 0, 153));
+        jButtonMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonMenu.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/casa.png"))); // NOI18N
+        jButtonMenu.setText("Menu");
+        jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuActionPerformed(evt);
             }
         });
 
@@ -156,12 +175,14 @@ public class JFrameKey extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(304, 304, 304)
-                        .addComponent(jLabelTitle))
+                        .addComponent(jButtonMenu)
+                        .addGap(139, 139, 139)
+                        .addComponent(jLabelTitle)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,15 +208,17 @@ public class JFrameKey extends javax.swing.JFrame {
                                 .addGap(97, 97, 97)
                                 .addComponent(jButtonDelete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                                .addComponent(jButtonClear)))))
-                .addGap(60, 60, 60))
+                                .addComponent(jButtonClear)))
+                        .addGap(60, 60, 60))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTitle)
+                    .addComponent(jButtonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addComponent(jLabelTitle)
-                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,7 +245,7 @@ public class JFrameKey extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane1)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonInsert)
                     .addComponent(jButtonUpdate)
@@ -254,15 +277,15 @@ public class JFrameKey extends javax.swing.JFrame {
 
     private void jTableKeysMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKeysMouseClicked
         int rowSelected = jTableKeys.getSelectedRow();
-        
+
         if (rowSelected != -1) {
             jButtonInsert.setEnabled(false);
             jButtonUpdate.setEnabled(true);
             jButtonDelete.setEnabled(true);
-            
+
             // Obtener de la tabla la celda con el Id de la llave correspondiente
             int idSelected = Integer.parseInt(jTableKeys.getValueAt(rowSelected, 0).toString());
-            
+
             try {
                 Key findKey = keyController.findById(idSelected);
                 jTextFieldId.setText(String.valueOf(findKey.getId()));
@@ -270,7 +293,7 @@ public class JFrameKey extends javax.swing.JFrame {
                 jTextFieldRoom.setText(findKey.getRoom());
                 jTextFieldCount.setText(String.valueOf(findKey.getCount()));
                 jTextAreaObservations.setText(findKey.getObservation());
-                
+
             } catch (Exception e) {
                 MessageUtils.showErrorMessage(e.getMessage());
             }
@@ -280,9 +303,9 @@ public class JFrameKey extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         try {
             int option = JOptionPane.showConfirmDialog(rootPane,
-                    "¿Esta seguro de eliminar el empleado?", "Confirmar" ,
+                    "¿Esta seguro de eliminar el empleado?", "Confirmar",
                     JOptionPane.YES_NO_OPTION);
-            
+
             if (option == 0) {
                 int id = Integer.parseInt(jTextFieldId.getText());
                 keyController.delete(id);
@@ -302,7 +325,7 @@ public class JFrameKey extends javax.swing.JFrame {
             key.setRoom(jTextFieldRoom.getText());
             key.setCount(Integer.parseInt(jTextFieldCount.getText()));
             key.setObservation(jTextAreaObservations.getText());
-            
+
             keyController.insert(key);
             clear();
             fillTable();
@@ -319,7 +342,7 @@ public class JFrameKey extends javax.swing.JFrame {
             key.setRoom(jTextFieldRoom.getText());
             key.setCount(Integer.parseInt(jTextFieldCount.getText()));
             key.setObservation(jTextAreaObservations.getText());
-            
+
             keyController.update(key);
             clear();
             fillTable();
@@ -328,6 +351,14 @@ public class JFrameKey extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
+        int confirm = JOptionPane.showConfirmDialog(null, "¿Deseas volver al menú principal?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            new JFrameHome().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jButtonMenuActionPerformed
+
     public void fillTable() {
         try {
             DefaultTableModel model = new DefaultTableModel();
@@ -335,7 +366,7 @@ public class JFrameKey extends javax.swing.JFrame {
             model.addColumn("Id");
             model.addColumn("Nombre");
             model.addColumn("Cuarto");
-            
+
             String[] rows = new String[3];
             List<Key> allKeys = keyController.findAll();
             for (Key allKey : allKeys) {
@@ -344,12 +375,12 @@ public class JFrameKey extends javax.swing.JFrame {
                 rows[2] = allKey.getRoom();
                 model.addRow(rows);
             }
-            
+
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }
     }
-    
+
     public void clear() {
         jButtonInsert.setEnabled(true);
         jButtonUpdate.setEnabled(false);
@@ -361,7 +392,7 @@ public class JFrameKey extends javax.swing.JFrame {
         jTextAreaObservations.setText("");
         jTableKeys.clearSelection();
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -401,6 +432,7 @@ public class JFrameKey extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
+    private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabelCount;
     private javax.swing.JLabel jLabelId;
